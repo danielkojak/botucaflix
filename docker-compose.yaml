@@ -1,14 +1,34 @@
 version: '3'
 services:
+  node:
+    build: 
+      dockerfile: ./Dockerfile
+      context: .
+    container_name: botucaflix_api
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 3001:3001
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: database
+      MYSQL_PORT: 3306
+    depends_on:
+      database:
+        condition: service_healthy  
+
   database:
     image: mysql:8.0.37
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABSE: botucaflix
+      MYSQL_DATABSE: botucaflixdb
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 10s
       retries: 5
     ports:
-      - "33060:3306"
+      - "33061:3306"
