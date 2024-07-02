@@ -1,0 +1,14 @@
+version: '3'
+services:
+  database:
+    image: mysql:8.0.37
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABSE: botucaflix
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    ports:
+      - "33060:3306"

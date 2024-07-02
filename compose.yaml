@@ -1,5 +1,0 @@
-services:
-  database:
-    image: mysql:8.0.37
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
