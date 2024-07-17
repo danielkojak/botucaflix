@@ -1,4 +1,5 @@
 const express = require('express');
+const userRoutes = require('./routes/userRoutes');
 
 const teams = [
   {
@@ -16,6 +17,8 @@ const teams = [
 const app = express();
 
 app.use(express.json());
+
+app.use('/user', userRoutes);
 
 app.get('/', (req, res) => res.status(200).json({ message: 'Olá Mundo!' }));
 

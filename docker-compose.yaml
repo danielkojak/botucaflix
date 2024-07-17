@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   node:
     build: 
@@ -18,17 +19,20 @@ services:
       MYSQL_PORT: 3306
     depends_on:
       database:
-        condition: service_healthy  
-
+        condition: service_healthy
+    env_file: .env
+        
   database:
     image: mysql:8.0.37
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABSE: botucaflixdb
+      MYSQL_DATABASE: botucaflixdb
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 10s
       retries: 5
     ports:
       - "33061:3306"
+    volumes:
+        - ./botucaflix_script.sql:/docker-entrypoint-initdb.d/botucaflix_script.sql
