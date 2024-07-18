@@ -16,14 +16,12 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  try {
-    const [result] = await userModel.findAll();
-    res.status(200).json(result);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: err.sqlMessage });
+  const serviceResponse = await userService.findAll();
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(400).json(serviceResponse.data);
   }
-  });
+  return res.status(200).json(serviceResponse.data);
+});
 
 router.get('/:id', async (req, res) => {
   try {

@@ -21,6 +21,12 @@ const createUser = async ({ firstName, lastName, email, phone }) => {
   return { status: 'SUCCESSFUL', data: newUser };
 };
 
+const findAll = async () => {
+  const [users] = await userModel.findAll();
+  return { status: 'SUCCESSFUL', data: users };
+};
+
 module.exports = {
   createUser,
+  findAll,
 };
