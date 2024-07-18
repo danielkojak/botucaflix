@@ -1,18 +1,18 @@
 const express = require('express');
 const { userModel } = require('../models');
+const { userService } = require('../services');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-  const user = req.body;
-  try {
-    const [result] = await userModel.insert(user);
-    res.status(201).json({
-      message: `Usuário cadastrado com sucesso com o id ${result.insertId}` });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ message: 'Ocorreu um erro ao cadastrar um usuário' });
-    }
+  const { firstName, lastName, email, phone } = req.body;
+  
+  const serviceResponse = await userService.createUser({ firstName, lastName, email, phone });
+  console.log(serviceResponse);
+  if (serviceResponse.status !== 'SUCCESSFUL') {
+    return res.status(400).json(serviceResponse.data);
+  }
+  return res.status(201).json(serviceResponse.data);
 });
 
 router.get('/', async (req, res) => {
