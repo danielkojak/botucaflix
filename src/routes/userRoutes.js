@@ -1,12 +1,12 @@
 const express = require('express');
-const userDB = require('../db/userDB');
+const { userModel } = require('../models');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   const user = req.body;
   try {
-    const [result] = await userDB.insert(user);
+    const [result] = await userModel.insert(user);
     res.status(201).json({
       message: `Usuário cadastrado com sucesso com o id ${result.insertId}` });
     } catch (err) {
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const [result] = await userDB.findAll();
+    const [result] = await userModel.findAll();
     res.status(200).json(result);
   } catch (err) {
     console.log(err);
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const [[result]] = await userDB.findById(id);
+    const [[result]] = await userModel.findById(id);
     if (result) {
       res.status(200).json(result);
     } else {
@@ -44,7 +44,7 @@ router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const person = req.body;
-    const [result] = await userDB.update(person, id);
+    const [result] = await userModel.update(person, id);
     if (result.affectedRows > 0) {
       res.status(200).json({ message: `Pessoa de id ${id} atualizada com sucesso` });
     } else {
@@ -58,7 +58,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const [result] = await userDB.remove(id);
+    const [result] = await userModel.remove(id);
     if (result.affectedRows > 0) {
       res.status(200).json({ message: `Pessoa de id ${id} excluída com sucesso` });
     } else {
