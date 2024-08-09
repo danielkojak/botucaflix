@@ -6,7 +6,7 @@ module.exports = {
     password: process.env.DB_PASSWORD || 'password',
     database: process.env.DB_NAME || 'botucaflixdb',
     host: process.env.DB_HOST || 'localhost',
-    port: 33061,
+    port: 3306,
     dialect: process.env.DB_DIALECT || 'mysql',
   },
   test: {
@@ -14,7 +14,7 @@ module.exports = {
   password: process.env.DB_PASSWORD || 'password',
   database: process.env.DB_NAME || 'botucaflixdb',
   host: process.env.DB_HOST || 'localhost',
-  port: 33061,
+  port: 3306,
   dialect: process.env.DB_DIALECT || 'mysql',
 },
   production: {
@@ -22,7 +22,7 @@ module.exports = {
     password: process.env.DB_PASSWORD || 'password',
     database: process.env.DB_NAME || 'botucaflixdb',
     host: process.env.DB_HOST || 'localhost',
-    port: 33061,
+    port: 3306,
     dialect: process.env.DB_DIALECT || 'mysql',
   },
 };
