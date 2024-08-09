@@ -6,10 +6,10 @@ services:
     image: botucaflix
     restart: always
     ports:
-      -3001:3001
+      - 3001:3001
     environment:
       DB_USER: root
-      DB_PASSWORD: root
+      DB_PASSWORD: password
       DB_NAME: botucaflixdb
       DB_HOST: db
     depends_on:
