@@ -8,10 +8,10 @@ services:
     ports:
       - 3001:3001
     environment:
-      DB_USER: root
-      DB_PASSWORD: password
-      DB_NAME: botucaflixdb
-      DB_HOST: db
+      DB_USER: ${ENV}_DB_USER
+      DB_PASSWORD: ${ENV}_DB_PASSWORD
+      DB_NAME: ${ENV}_DB_NAME
+      DB_HOST: ${ENV}_DB_HOST
     depends_on:
       - db
     command: dev
