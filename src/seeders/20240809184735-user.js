@@ -9,6 +9,7 @@ module.exports = {
           name: 'Daniel Kojak',
           email: "daniel.kojak@gmail.com",
           birthday: '1987-11-12',
+          password: "senha123",
         }
       ], {});     
   },

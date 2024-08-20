@@ -3,6 +3,7 @@ const UserSchema = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     birthday: DataTypes.DATE,
+    password: DataTypes.STRING,
   },
   {
     tableName: 'users',
