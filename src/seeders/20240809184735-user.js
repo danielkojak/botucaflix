@@ -15,7 +15,7 @@ module.exports = {
           name: 'Caju Kojak',
           email: "caju.kojak@gmail.com",
           birthday: '2021-12-03',
-          password: "caju123",
+          password: "caju444",
         }
       ], {});     
   },

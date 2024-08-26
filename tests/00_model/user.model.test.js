@@ -40,4 +40,19 @@ describe('****MODELS**** > USER MODEL', () => {
     const deletedUser = await User.findByPk(user.id);
     expect(deletedUser).to.be.null;
   });
+
+  // Não consegui testar a falha abaixo pois não retorna erro
+
+/*   it('Testa falha ao deletar usuário inexistente', async () => {
+    const user = await User.create(userToInsert);
+  
+    await user.destroy();
+  
+    try {      
+      await user.destroy();
+    } catch (error) {
+      console.log(error);
+      expect(error).to.be.instanceOf(Error);
+    }
+  }); */
  });

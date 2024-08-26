@@ -8,16 +8,20 @@ const sequelize = new Sequelize(config[env]);
 
 
 const createUser = async ({ name, email, phone, password }) => {
-  User.create({ name, email, phone, password });
+  const userCreated = await User.create({ name, email, phone, password });
+  return { status: 'SUCCESSFUL', data: {userCreated}}
 };
 
 const getAll = async () => {
   try {
-    const users = await User.findAll();
-    return users;
+    const allUsers = await User.findAll();
+    console.log('allUsers: ', allUsers);
+    return { status: 'SUCCESSFUL', data: {allUsers} }  
   } catch (error) {
-    console.error(error);
+    console.log('Deu erro: ', error);    
   }
+  
+  
 };
 
 const getById = async (id) => {
