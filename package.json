@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "prestart": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
-    "start": "NODE_ENV=production node ./src/server.js",
+    "setup": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "start": "node ./src/server.js",
     "dev": "NODE_ENV=development nodemon ./src/server.js",
     "test": "NODE_ENV=test mocha ./tests/**/*$NAME*.test.js --exit"
   },
@@ -17,7 +17,9 @@
     "express": "^4.19.2",
     "jsonwebtoken": "9.0.0",
     "mysql2": "^3.11.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "sinon-chai": "^4.0.0",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "chai": "4.3.4",
