@@ -6,7 +6,7 @@
     "setup": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
     "start": "node ./src/server.js",
     "dev": "NODE_ENV=development nodemon ./src/server.js",
-    "test": "NODE_ENV=test mocha ./tests/**/*$NAME*.test.js --exit"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -22,11 +22,7 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "chai": "4.3.4",
-    "chai-http": "4.3.0",
-    "mocha": "10.0.0",
     "nodemon": "^3.1.4",
-    "sequelize-cli": "^6.6.2",
-    "sinon": "14.0.0"
+    "sequelize-cli": "^6.6.2"
   }
 }
