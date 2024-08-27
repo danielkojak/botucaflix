@@ -4,14 +4,18 @@ services:
     image: botucaflix
     restart: always
     ports:
-      - 3002:3001
+      - 3001:3001
     environment:
-      DB_USER: root
-      DB_PASSWORD: password
-      DB_NAME: botucaflixdb
+      NODE_ENV: ${NODE_ENV}
+      DB_USER: ${NODE_ENV}_DB_USER
+      DB_PASSWORD: ${NODE_ENV}_DB_PASSWORD
+      DB_NAME: ${NODE_ENV}_DB_NAME
       DB_HOST: db
+    env_file:
+      - .env
     depends_on:
       - db
+    command: dev
     volumes:
       - .:/app
     networks:

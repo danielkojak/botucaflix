@@ -7,13 +7,14 @@ const env = process.env.NODE_ENV || 'development';
 const sequelize = new Sequelize(config[env]);
 
 
-const createUser = async ({ name, email, phone, password }) => {
+/* const createUser = async ({ name, email, phone, password }) => {
   const userCreated = await User.create({ name, email, phone, password });
   return { status: 'SUCCESSFUL', data: {userCreated}}
-};
+}; */
 
 const getAll = async () => {
   try {
+    console.log('chegou no getAll Service', User);
     const allUsers = await User.findAll();
     console.log('allUsers: ', allUsers);
     return { status: 'SUCCESSFUL', data: {allUsers} }  
@@ -24,7 +25,7 @@ const getAll = async () => {
   
 };
 
-const getById = async (id) => {
+/* const getById = async (id) => {
   const user = await User.findOne({
     where: { id },
   });
@@ -46,13 +47,17 @@ const removeUser = async (id) => {
   });
 
   return removed > 0;
-};
+}; */
 
 
-module.exports = {
+/* module.exports = {
   createUser,
   getAll,
   getById,
   updateUser,
   removeUser
-}
+} */
+
+  module.exports = {
+    getAll
+  }

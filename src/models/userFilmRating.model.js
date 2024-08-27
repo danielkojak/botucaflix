@@ -9,7 +9,7 @@ const UserFilmRatingSchema = (sequelize, DataTypes) => {
   });
 
   UserFilmRatingTable.associate = (models) => {
-    models.FilmTable.belongToMany(models.UserTable,
+    models.Film.belongsToMany(models.User,
       {
         as: 'users',
         through: UserFilmRatingTable,
@@ -18,7 +18,7 @@ const UserFilmRatingSchema = (sequelize, DataTypes) => {
       }
     );
 
-    models.UserTable.belongToMany(models.FilmTable,
+    models.User.belongsToMany(models.Film,
       {
         as: 'films',
         through: UserFilmRatingTable,
