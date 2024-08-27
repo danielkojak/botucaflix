@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
+    "start": "node ./src/server.js",
+    "dev": "NODE_ENV=development nodemon ./src/server.js",
+    "test": "NODE_ENV=test mocha ./tests/**/*$NAME*.test.js --exit"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,14 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mysql2": "^3.11.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "6.3.4"
+  },
+  "devDependencies": {
+    "chai": "4.3.4",
+    "chai-http": "4.3.0",
+    "mocha": "10.0.0",
+    "nodemon": "^3.1.4",
+    "sequelize-cli": "6.6.1",
+    "sinon": "14.0.0"
   }
 }
